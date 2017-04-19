@@ -1,0 +1,23 @@
+CREATE USER 'student'@'localhost' IDENTIFIED BY 'student';
+
+GRANT ALL PRIVILEGES ON * . * TO 'student'@'localhost';
+
+create database if not exists learning_institue; 
+use learning_institue;
+drop table if exists learning_institue.teaching_type;
+create table learning_institue.teaching_type (teaching_type_id int(10) ,
+ teaching_type_code varchar(45) , 
+ teaching_type_desc varchar(45) , 
+ inactive_flag int(10)  ) ;
+
+insert into learning_institue.teaching_type values (1,'ONLINE','Online Course',0);
+insert into learning_institue.teaching_type values (2,'YOUTUBE','Youtube Videos',0);
+insert into learning_institue.teaching_type values (3,'LECTURE','Guest Lecture',0);
+
+drop table if exists learning_institue.feedback;
+create table learning_institue.feedback(feedback_id int(10) NOT NULL AUTO_INCREMENT
+, feedback_name varchar(45), feedback_email varchar(45), feedback_narrative varchar(45), teaching_type_code varchar(10), feedback_rating varchar(10),PRIMARY KEY (`feedback_id`) );
+
+insert into learning_institue.feedback values (0,'shilpa','s@mail.com','good','ONLINE','5');
+
+select * from learning_institue.feedback;
